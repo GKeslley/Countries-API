@@ -1,0 +1,260 @@
+body {
+  font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.container {
+  max-width: 1400px;
+  box-sizing: border-box;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header {
+  background: hsl(209, 23%, 22%);
+}
+
+.header a {
+  font-weight: 800;
+}
+
+.header-conteudo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  gap: 10px 20px;
+}
+
+.header-conteudo h1 {
+  font-size: 1.8rem;
+}
+
+html {
+  background: hsl(207, 26%, 17%);
+  height: 100%;
+  padding-bottom: 30px;
+}
+
+main.main2 {
+  height: 100vh;
+}
+
+.search {
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: 0.5fr auto;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.search input {
+  padding: 15px;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid hsl(209, 23%, 22%);
+  background: hsl(209, 23%, 22%);
+}
+
+.search input::placeholder {
+  color: white;
+}
+
+.search select {
+  padding: 15px 80px 15px 15px;
+  border-radius: 4px;
+  border: 1px solid hsl(209, 23%, 22%);
+  background: hsl(209, 23%, 22%);
+  color: white;
+}
+
+.search select option {
+  padding: 40px;
+}
+
+.countries {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 200px 30px;
+}
+
+.countrie {
+  height: 250px;
+  margin-bottom: 30px;
+  width: 100%;
+  position: relative;
+  margin-bottom: 100px;
+}
+
+main.main2 picture {
+  border: 20px solid hsla(208, 23%, 22%, 0.123);
+  border-radius: 6px;
+}
+
+.countrie img {
+  border-radius: 4px 4px 0px 0px;
+  width: 100%;
+  height: 100%;
+}
+
+.countrie div {
+  display: grid;
+  padding: 30px 0px;
+  background: hsl(209, 23%, 22%);
+  border-radius: 0 0 4px 4px;
+  padding-left: 30px;
+  padding-right: 15px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.countrie div h1 {
+  margin-bottom: 20px;
+}
+
+.countrie div p + p {
+  margin-top: 10px;
+}
+
+.countrie div p {
+  font-size: 1.1rem;
+}
+
+.infos-bg {
+  background: hsl(207, 26%, 17%);
+}
+
+.infos-conteudo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding-top: 40px;
+  padding-bottom: 40px;
+  gap: 0px 30px;
+}
+
+.infos-conteudo picture {
+  margin-bottom: 20px;
+}
+
+.infos-pais {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  align-content: center;
+  grid-column: 2;
+  padding-bottom: 50px;
+}
+
+.infos-pais h1 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  grid-column: span 2;
+}
+
+p {
+  font-weight: 800;
+}
+
+span {
+  font-weight: 300;
+}
+
+.infos-pais li p + p {
+  margin-top: 15px;
+}
+
+.back {
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  background: hsl(209, 23%, 22%);
+  justify-self: start;
+  border-radius: 6px;
+}
+
+.back a {
+  display: flex;
+  align-items: center;
+  padding: 10px 50px;
+}
+
+.back a::before {
+  content: "⬅";
+  margin-right: 8px;
+}
+
+.borders {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0px 15px;
+}
+
+.borders a {
+  background: hsl(209, 23%, 22%);
+  padding: 3px 20px;
+  margin-bottom: 10px;
+  border: 2px solid hsla(208, 23%, 22%, 0.123);
+  font-size: 0.8rem;
+}
+
+.borders a:hover {
+  background: hsl(208, 22%, 21%);
+}
+
+@media (max-width: 860px) {
+  .infos-conteudo {
+    grid-template-columns: 1fr;
+  }
+  .infos-pais {
+    display: flex;
+    grid-column: 1;
+    flex-direction: column;
+    padding-bottom: 0px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    margin-left: 20px;
+  }
+  .infos-pais li:nth-child(even) {
+    margin-bottom: 60px;
+  }
+  .borders {
+    margin-left: 20px;
+    padding: 0px;
+  }
+}
+
+@media (max-width: 600px) {
+  .countries {
+    grid-template-columns: 1fr;
+  }
+}
