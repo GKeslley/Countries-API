@@ -1,3 +1,5 @@
+import initInfosPaises from "./infosPaises.js";
+
 export default function initCountriesAPI() {
   const elementCountries = document.querySelector(".countries");
 
@@ -37,6 +39,8 @@ export default function initCountriesAPI() {
 
       return countrie;
     });
+
+    initInfosPaises(countriesSpread);
   }
   countriesAPI();
 }
