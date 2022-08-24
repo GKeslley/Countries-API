@@ -7,6 +7,29 @@ export default function initCountriesAPI() {
     const countriesFetch = await fetch("https://restcountries.com/v2/all");
     const jsonCountries = await countriesFetch.json();
 
+    const colorModes = document.querySelector(".colorMode");
+
+    const darkBackground = "hsl(207, 26%, 17%)";
+    const lightBackground = "none";
+    const classLightMode = "lightMode";
+
+    function changeColorMode(event) {
+      event.preventDefault();
+      document.body.classList.toggle(classLightMode);
+
+      if (document.body.classList.contains(classLightMode)) {
+        document.documentElement.style.background = lightBackground;
+        colorModes.innerText = "Light Mode";
+        localStorage.setItem(classLightMode, true);
+      } else {
+        document.documentElement.style.background = darkBackground;
+        colorModes.innerText = "Dark Mode";
+        localStorage.setItem(classLightMode, false);
+      }
+    }
+
+    colorModes.addEventListener("click", changeColorMode);
+
     const countriesSpread = [...jsonCountries].map((countrie) => {
       const elementA = document.createElement("a");
       const elementDiv = document.createElement("div");
