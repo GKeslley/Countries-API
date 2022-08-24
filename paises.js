@@ -30,6 +30,19 @@ export default function initCountriesAPI() {
 
     colorModes.addEventListener("click", changeColorMode);
 
+    function checkLocalStorageMode() {
+      if (localStorage.getItem(classLightMode) === "true") {
+        document.documentElement.style.background = lightBackground;
+        colorModes.innerText = "Light Mode";
+        document.body.classList.add(classLightMode);
+      } else {
+        document.documentElement.style.background = darkBackground;
+        colorModes.innerText = "Dark Mode";
+        document.body.classList.remove(classLightMode);
+      }
+    }
+    checkLocalStorageMode();
+
     const countriesSpread = [...jsonCountries].map((countrie) => {
       const elementA = document.createElement("a");
       const elementDiv = document.createElement("div");
