@@ -7,6 +7,8 @@ export default function initCountriesAPI() {
     const countriesFetch = await fetch("https://restcountries.com/v2/all");
     const jsonCountries = await countriesFetch.json();
 
+    const inputCountrie = document.getElementById("search");
+    const selectRegion = document.getElementById("region");
     const colorModes = document.querySelector(".colorMode");
 
     const darkBackground = "hsl(207, 26%, 17%)";
@@ -49,29 +51,56 @@ export default function initCountriesAPI() {
       const elementImg = document.createElement("img");
       elementImg.src = countrie.flag;
 
-      function addTextInHTML() {
-        elementDiv.innerHTML = `<h1>${
-          countrie.name
-        }</h1> <p>Population: <span>${
-          countrie.population
-        }</span></p> <p>Capital: <span>${
-          countrie.capital || "No exist"
-        }</span></p> <p>Region: <span>${
-          countrie.region || "No exist"
-        }</span></p>`;
+      if (inputCountrie && selectRegion) {
+        function searchCountrie() {
+          inputCountrie.addEventListener("keyup", (event) => {
+            event.target.value = `${event.target.value
+              .slice(0, 1)
+              .toUpperCase()}${event.target.value.slice(1)}`;
+            if (countrie.name.includes(event.target.value)) {
+              elementA.style.display = "block";
+            } else elementA.style.display = "none";
+          });
+        }
 
-        elementA.setAttribute("href", "./infos.html");
-        elementA.classList.add("countrie");
-        elementA.appendChild(elementImg);
-        elementA.appendChild(elementDiv);
-        elementCountries.appendChild(elementA);
+        function filterRegion() {
+          selectRegion.addEventListener("change", () => {
+            const selectOption =
+              selectRegion.options[selectRegion.selectedIndex].text;
 
-        elementA.addEventListener("click", () =>
-          localStorage.setItem("selectedCountrie", JSON.stringify(countrie))
-        );
+            if (countrie.region.includes(selectOption)) {
+              elementA.style.display = "block";
+            } else elementA.style.display = "none";
+          });
+        }
+
+        searchCountrie();
+        filterRegion();
+
+        function addTextInHTML() {
+          elementDiv.innerHTML = `<h1>${
+            countrie.name
+          }</h1> <p>Population: <span>${
+            countrie.population
+          }</span></p> <p>Capital: <span>${
+            countrie.capital || "No exist"
+          }</span></p> <p>Region: <span>${
+            countrie.region || "No exist"
+          }</span></p>`;
+
+          elementA.setAttribute("href", "./infos.html");
+          elementA.classList.add("countrie");
+          elementA.appendChild(elementImg);
+          elementA.appendChild(elementDiv);
+          elementCountries.appendChild(elementA);
+
+          elementA.addEventListener("click", () =>
+            localStorage.setItem("selectedCountrie", JSON.stringify(countrie))
+          );
+        }
+
+        addTextInHTML();
       }
-
-      addTextInHTML();
 
       return countrie;
     });
